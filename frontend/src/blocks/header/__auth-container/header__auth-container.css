@@ -1,0 +1,11 @@
+.header__auth-container {
+    display: flex;
+    align-items: center;
+    text-align: right;
+    padding-bottom: 22px;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+  }

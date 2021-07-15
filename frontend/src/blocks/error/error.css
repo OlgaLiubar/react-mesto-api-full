@@ -1,0 +1,15 @@
+.error {
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+    display: block;
+    margin-bottom: 13px;
+    box-sizing: border-box;
+    min-height: 2px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    .error  {
+      min-height: 12px;
+    }
+  }

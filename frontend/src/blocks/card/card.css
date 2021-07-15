@@ -1,0 +1,14 @@
+.card{
+  margin: 0;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  object-fit: cover;
+  flex: 1;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
