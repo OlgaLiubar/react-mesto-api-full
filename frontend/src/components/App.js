@@ -45,8 +45,9 @@ function App() {
         auth
           .getContent(jwt)
           .then(res => {
+            // console.log(res);
             if (res) {
-              setEmail(res.data.email);
+              setEmail(res.email);
               history.push('/');
               handleLogin();
             }
@@ -117,10 +118,8 @@ function App() {
 
   //Обработчик лайка
   function handleCardLike(card) {
-    // console.log(card);
 
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
-
+    const isLiked = card.likes.some((like) => like === currentUser._id);
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
@@ -152,14 +151,14 @@ function App() {
   function handleAddPlaceSubmit(newCard) {
     setIsCardSending(true);
     api.uploadCard(newCard)
-      // .then((card) => setCards([card, ...cards]))
-      // .catch((err) => console.log(err))
-      // .finally(() => closeAllPopups());
+    // console.log(newCard)
       .then((newCardFull) => {
+        console.log(newCardFull);
         setCards((state) => [
           newCardFull,
           ...state,
         ]);
+        console.log(cards);
         closeAllPopups();
       })
       .catch(err => console.log(`Добавление карточки: ${err}`))
@@ -171,6 +170,7 @@ function App() {
     api
       .uploadUserInfo(user)
       .then((res) => {
+        console.log(res)
         setCurrentUser(res);
       })
       .catch((err) => console.log(err))
@@ -202,25 +202,24 @@ function App() {
   function handleRegisterFormSubmit(password, email) {
     auth
       .register(password, email)
-      .then(() => {
-        setInfoTooltip({ caption: 'Вы успешно зарегистрировались!', icon: 'success', isOpen: true });
+      .then((res) => {
         history.push('/sign-in');
+        setInfoTooltip({ caption: 'Вы успешно зарегистрировались!', icon: 'success', isOpen: true });
         // console.log(res);
       })
       .catch((err) => {
         setInfoTooltip({ caption: 'Что-то пошло не так! Попробуйте еще раз.', icon: 'error', isOpen: true });
-        console.log(err);
+        // console.log(err);
       })
   }
 
   //Обработчик сабмита формы входа
   function handleLoginFormSubmit(password, email) {
     auth.signIn(password, email)
-      .then((data) => {
-        if (data.token) {
+      .then((res) => {
+        // console.log(data)
           handleLogin();
           history.push('/');
-        }
       })
       .catch((err) => {
         setInfoTooltip({ caption: 'Что-то пошло не так! Попробуйте еще раз.', icon: 'error', isOpen: true });

@@ -71,7 +71,7 @@ function Main({
                                 onCardLike={onCardLike}
                                 onCardClick={onCardClick}
                                 onDeleteClick={onDeleteClick}
-                                cardData={card}
+                                card={card}
                                 key={card._id}
                             />
                         ))}

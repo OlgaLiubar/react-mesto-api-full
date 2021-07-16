@@ -11,15 +11,15 @@ class Api {
     return Promise.reject(`Error: ${res.status}`);
   }
 
-  // getInitialData() {
-  //   return Promise.all([this.getUserData(), this.getInitialCards()]);
-  // }
+  getInitialData() {
+    return Promise.all([this.getUserData(), this.getInitialCards()]);
+  }
 
   getInitialCards() {
     return fetch(`${this._url}cards/`, {
       method: "GET",
-      headers: this._headers,
       credentials: 'include',
+      headers: this._headers
     })
       .then(this._checkResponse)
   }
@@ -27,8 +27,8 @@ class Api {
   getUserData() {
     return fetch(`${this._url}users/me`, {
       method: 'GET',
-      headers: this._headers,
       credentials: 'include',
+      headers: this._headers
     })
       .then(this._checkResponse)
   }
@@ -37,8 +37,8 @@ class Api {
   uploadCard({name, link}) {
     return fetch(`${this._url}cards`, {
       method: 'POST',
-      headers: this._headers,
       credentials: 'include',
+      headers: this._headers,
       body: JSON.stringify({name, link})
     })
       .then(this._checkResponse)
@@ -47,8 +47,8 @@ class Api {
   deleteCard(cardId) {
     return fetch(`${this._url}cards/${cardId}`, {
       method: 'DELETE',
-      headers: this._headers,
       credentials: 'include',
+      headers: this._headers
     })
       .then(this._checkResponse)
   }
@@ -56,8 +56,8 @@ class Api {
   uploadUserInfo(data) {
     return fetch(`${this._url}users/me`, {
       method: 'PATCH',
-      headers: this._headers,
       credentials: 'include',
+      headers: this._headers,
       body: JSON.stringify(data)
     })
       .then(this._checkResponse)
@@ -67,34 +67,25 @@ class Api {
   setUserAvatar(link) {
     return fetch(`${this._url}users/me/avatar`, {
       method: 'PATCH',
-      headers: this._headers,
       credentials: 'include',
+      headers: this._headers,
       body: JSON.stringify(link)
     })
       .then(this._checkResponse)
   }
 
   changeLikeCardStatus(id, isLiked) {
-    if (isLiked) {
-      return fetch(`${this._url}cards/likes/${id}`, {
-        method: "PUT",
-        headers: this._headers,
+      return fetch(`${this._url}cards/${id}/likes`, {
+        method: isLiked ? 'PUT' : 'DELETE',
         credentials: 'include',
-      })
-        .then(this._checkResponse);
-    } else {
-      return fetch(`${this._url}cards/likes/${id}`, {
-        method: "DELETE",
         headers: this._headers,
-        credentials: 'include',
       })
         .then(this._checkResponse);
     }
   }
-}
 
 const api = new Api({
-  url: 'https://api.olgaliubar.students.nomoredomains.monster',
+  url: 'http://api.olgaliubar.students.nomoredomains.monster',
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json"
