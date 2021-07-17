@@ -16,7 +16,7 @@ class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._url}cards/`, {
+    return fetch(`${this._url}/cards/`, {
       method: "GET",
       credentials: 'include',
       headers: this._headers
@@ -25,7 +25,7 @@ class Api {
   }
 
   getUserData() {
-    return fetch(`${this._url}users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: 'GET',
       credentials: 'include',
       headers: this._headers
@@ -35,7 +35,7 @@ class Api {
 
 
   uploadCard({name, link}) {
-    return fetch(`${this._url}cards`, {
+    return fetch(`${this._url}/cards`, {
       method: 'POST',
       credentials: 'include',
       headers: this._headers,
@@ -45,7 +45,7 @@ class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._url}cards/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
       credentials: 'include',
       headers: this._headers
@@ -54,7 +54,7 @@ class Api {
   }
 
   uploadUserInfo(data) {
-    return fetch(`${this._url}users/me`, {
+    return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       credentials: 'include',
       headers: this._headers,
@@ -65,7 +65,7 @@ class Api {
 
   //аватар
   setUserAvatar(link) {
-    return fetch(`${this._url}users/me/avatar`, {
+    return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       credentials: 'include',
       headers: this._headers,
@@ -75,7 +75,7 @@ class Api {
   }
 
   changeLikeCardStatus(id, isLiked) {
-      return fetch(`${this._url}cards/${id}/likes`, {
+      return fetch(`${this._url}/cards/${id}/likes`, {
         method: isLiked ? 'PUT' : 'DELETE',
         credentials: 'include',
         headers: this._headers,
@@ -85,7 +85,7 @@ class Api {
   }
 
 const api = new Api({
-  url: 'https://api.olgaliubar.students.nomoredomains.monster/',
+  url: 'https://api.olgaliubar.students.nomoredomains.monster',
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json"
