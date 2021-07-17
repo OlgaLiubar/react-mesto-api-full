@@ -37,6 +37,12 @@ app.use(cors(corsOptions));
 
 app.use(requestLogger);// логгер запросов
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 // роуты, не требующие авторизации
 app.post(
   '/signin',
