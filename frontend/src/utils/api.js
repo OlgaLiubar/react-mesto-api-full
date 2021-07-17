@@ -85,7 +85,7 @@ class Api {
   }
 
 const api = new Api({
-  url: 'https://api.olgaliubar.students.nomoredomains.monster',
+  url: 'https://api.olgaliubar.students.nomoredomains.monster/',
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json"
