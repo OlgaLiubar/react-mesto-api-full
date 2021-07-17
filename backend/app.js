@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi, errors } = require('celebrate');
-const cors = require('./middlewares/cors');
+const cors = require("cors");
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const urlValidation = require('./middlewares/validation');
 const router = require('./routes');
@@ -15,11 +15,25 @@ const handleErrors = require('./errors/handleErrors');
 const { PORT = 3000 } = process.env;
 const app = express(); // подключаем экспресс
 
+const corsWhiteList = [
+  'https://olgaliubar.students.nomoredomains.monster',
+  'http://olgaliubar.students.nomoredomains.monster',
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (corsWhiteList.indexOf(origin) !== -1) {
+      callback(null, true);
+    }
+  },
+  credentials: true,
+};
+
 app.use(bodyParser.json()); // для собирания JSON-формата
 app.use(bodyParser.urlencoded({ extended: true })); // для приёма веб-страниц внутри POST-запроса
 app.use(cookieParser());
 
-app.use(cors);
+app.use(cors(corsOptions));
 
 app.use(requestLogger);// логгер запросов
 
