@@ -12,7 +12,7 @@ const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const handleErrors = require('./errors/handleErrors');
 
-const { PORT = 4000 } = process.env;
+const { PORT = 3000 } = process.env;
 const app = express(); // подключаем экспресс
 
 app.use(bodyParser.json()); // для собирания JSON-формата

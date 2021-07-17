@@ -9,16 +9,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/OlgaLiubar/express-mesto.git"
-  },
-  "author": "Olga Liubar",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/OlgaLiubar/express-mesto/issues"
-  },
-  "homepage": "https://github.com/OlgaLiubar/express-mesto#readme",
+  "homepage": "https://github.com/OlgaLiubar/react-mesto-api-full#readme",
   "devDependencies": {
     "eslint": "^7.28.0",
     "eslint-config-airbnb-base": "^14.2.1",
