@@ -8,23 +8,33 @@ const allowedCors = [
   'https://84.201.130.24',
 ];
 
-const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
+// const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
-module.exports = (req, res, next) => {
-  const { method } = req;
-  const requestHeaders = req.headers['access-control-request-headers'];
+// module.exports = (req, res, next) => {
+//   const { method } = req;
+//   const requestHeaders = req.headers['access-control-request-headers'];
 
-  const { origin } = req.headers;
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
+//   const { origin } = req.headers;
+//   if (allowedCors.includes(origin)) {
+//     res.header('Access-Control-Allow-Origin', origin);
+//   }
 
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', requestHeaders);
-    res.status(200).send();
-    return;
-  }
+//   if (method === 'OPTIONS') {
+//     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
+//     res.header('Access-Control-Allow-Headers', requestHeaders);
+//     res.status(200).send();
+//     return;
+//   }
 
-  next();
-};
+//   next();
+// };
+
+// const corsOptions = {
+//   origin: (origin, callback)=>{
+//       if (allowedCors.indexOf(origin) !== -1) {
+//           callback(null, true)
+//       } else {
+//           callback(null, false))
+//       }
+//   }
+// }
