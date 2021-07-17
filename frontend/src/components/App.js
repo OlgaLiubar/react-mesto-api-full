@@ -45,7 +45,6 @@ function App() {
         auth
           .getContent(jwt)
           .then(res => {
-            // console.log(res);
             if (res) {
               setEmail(res.email);
               history.push('/');
@@ -58,16 +57,6 @@ function App() {
 
     tokenCheck();
   }, [loggedIn, history])
-
-  // React.useEffect(() => {
-  //   api.getInitialData()
-  //     .then(([userData, cardsData]) => {
-  //       // console.log(userData);
-  //       setCurrentUser(userData);
-  //       setCards(cardsData);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
 
   React.useEffect(() => {
     if (loggedIn) {
@@ -89,7 +78,6 @@ function App() {
   }, [loggedIn]);
 
   function handleCardClick(card) {
-    // console.log(card);
     setSelectedCard(card)
     setIsImagePopupOpen(true)
   }
@@ -151,7 +139,6 @@ function App() {
   function handleAddPlaceSubmit(newCard) {
     setIsCardSending(true);
     api.uploadCard(newCard)
-    // console.log(newCard)
       .then((newCardFull) => {
         console.log(newCardFull);
         setCards((state) => [
@@ -205,11 +192,9 @@ function App() {
       .then((res) => {
         history.push('/sign-in');
         setInfoTooltip({ caption: 'Вы успешно зарегистрировались!', icon: 'success', isOpen: true });
-        // console.log(res);
       })
       .catch((err) => {
         setInfoTooltip({ caption: 'Что-то пошло не так! Попробуйте еще раз.', icon: 'error', isOpen: true });
-        // console.log(err);
       })
   }
 
@@ -217,7 +202,6 @@ function App() {
   function handleLoginFormSubmit(password, email) {
     auth.signIn(password, email)
       .then((res) => {
-        // console.log(data)
           handleLogin();
           history.push('/');
       })
@@ -300,12 +284,6 @@ function App() {
             isOpen={isImagePopupOpen}
             onClose={closeAllPopups}
           />
-
-          {/* <PopupWithForm
-            name="confirm-delete"
-            onClose={closeAllPopups}
-            title="Вы уверены?"
-            button="Да" /> */}
 
           <EditAvatarPopup
             onClose={closeAllPopups}

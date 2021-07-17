@@ -5,17 +5,6 @@ import {useFormWithValidation} from "../hooks/useForm";
 
 function AddPlacePopup({onAddPlace, onClose, isOpen, isSending}) {
     const {values, handleChange, resetFrom, errors, isValid} = useFormWithValidation();
-    // const [placeName, setPlaceName] = React.useState("");
-    // const [imageUrl, setImageUrl] = React.useState("");
-
-
-    // function handlePlaceNameChange(e) {
-    //     setPlaceName(e.target.value)
-    // }
-
-    // function handleImageChange(e) {
-    //     setImageUrl(e.target.value)
-    // }
 
     useEffect(() => {
       resetFrom()
@@ -24,7 +13,6 @@ function AddPlacePopup({onAddPlace, onClose, isOpen, isSending}) {
     function handleSubmit(e) {
         e.preventDefault();
         onAddPlace(values);
-        console.log(values)
     }
 
 
