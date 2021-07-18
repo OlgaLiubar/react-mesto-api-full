@@ -22,7 +22,7 @@ const corsWhiteList = [
 
 const corsOptions = {
   origin: (origin, callback) => {
-    if (corsWhiteList.indexOf(origin) !== -1) {
+    if (corsWhiteList.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     }
   },
