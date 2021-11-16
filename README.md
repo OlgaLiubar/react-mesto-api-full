@@ -21,3 +21,11 @@
 Бэкенд расположен в директории `backend/`, а фронтенд - в `frontend/`. 
   
 [Ссылка на Mesto](https://olgaliubar.students.nomoredomains.monster/)
+
+## Установка зависимостей
+
+##### `npm i` – установить зависимости проекта
+
+##### `npm start` – запуск devServer на http://localhost:3000/
+
+##### `npm run build` – production сборка проекта
