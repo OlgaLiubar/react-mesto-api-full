@@ -20,7 +20,10 @@
 
 Бэкенд расположен в директории `backend/`, а фронтенд - в `frontend/`. 
   
-[Ссылка на Mesto](https://olgaliubar.students.nomoredomains.monster/)
+[Ссылка на Mesto React](https://olgaliubar.students.nomoredomains.monster/)
+
+[Версия проекта на vanilla JS и ООП](https://github.com/OlgaLiubar/mesto)
+
 
 ## Установка зависимостей
 
